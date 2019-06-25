@@ -30,8 +30,6 @@ def search(request):
     page_data = pagination_data(paginator, page)
     return render(request, 'blog/index.html', locals())
 
-
-
 def tag(request,tag_id):
     t = models.Tag.objects.get(id=tag_id)
     if t.name == "全部":
@@ -43,7 +41,6 @@ def tag(request,tag_id):
     page_data = pagination_data(paginator, page)
     return render(request, 'blog/index.html', locals())
 
-
 def catagory(request,category_id):
     c = models.Category.objects.get(id=category_id)
     entries = models.Entry.objects.filter(category=c)
@@ -52,7 +49,6 @@ def catagory(request,category_id):
     page_data = pagination_data(paginator, page)
 
     return render(request, 'blog/index.html', locals())
-
 
 def make_paginator(objects, page, num=3):
     paginator = Paginator(objects, num)
@@ -198,7 +194,7 @@ def detail(request,blog_id):
     entry.increase_visiting()
 
     # comment_list = list()
-
+    #
     # def get_comment_list(comments):
     #     for comment in comments:
     #         comment_list.append(comment)

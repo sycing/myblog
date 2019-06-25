@@ -44,6 +44,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^xadmin/', xadmin.site.urls),
     url(r'^blog/',include('TestModel.urls') ),
+    url(r'^resource/',include('Resource.urls')),
     url(r'^latest/feed/$', LatestEntriesFeed()),    #RSS订阅
 
     url(r'^media/(?P<path>.*)$' , static_serve, { 'document_root' : settings.MEDIA_ROOT}),#静态文件
