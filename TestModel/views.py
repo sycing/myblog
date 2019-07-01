@@ -20,11 +20,17 @@ def archives(request, year, month):
 def search(request):
     keyword = request.GET.get('keyword',None)
     if not keyword:
+        print 123
         error_msg = u"请输入关键字"
-        return render(request,'blog/index.html',locals())
+        index(request)
+        # return render(request,'blog/index.html',locals())
+    # usernamelist=models.User.objects.get(username=keyword)
+    # print (usernamelist.id)
     entries = models.Entry.objects.filter(Q(title__icontains=keyword)
                                           | Q(body__icontains=keyword)
-                                          | Q(abstract__icontains=keyword))
+                                          | Q(abstract__icontains=keyword)
+                                          # |Q(author_id=usernamelist.id)
+                                          )
     page = request.GET.get('page', 1)
     entry_list, paginator = make_paginator(entries, page)
     page_data = pagination_data(paginator, page)
@@ -59,7 +65,6 @@ def make_paginator(objects, page, num=3):
     except EmptyPage:
         object_list = paginator.page(paginator.num_pages)
     return object_list, paginator
-
 
 def pagination_data(paginator, page):
     """
@@ -170,16 +175,12 @@ def pagination_data(paginator, page):
     }
     return data
 
-
 def index(request):
     entries = models.Entry.objects.all()
     page = request.GET.get('page', 1)
     entry_list, paginator = make_paginator(entries, page)
     page_data = pagination_data(paginator, page)
     return render(request, 'blog/index.html', locals())
-
-
-
 
 def detail(request,blog_id):
     # entry = models.Entry.objects.get(id=blog_id)

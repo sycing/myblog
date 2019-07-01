@@ -9,9 +9,9 @@ from TestModel.models import *
 
 class Comment(models.Model):
     name=models.CharField(u'用户名',max_length=50)
-    email=models.EmailField(u'邮箱',max_length=255)
     create_time=models.DateTimeField(u'评论时间',auto_now_add=True)
     repley_name=models.CharField(u'目标用户',max_length=100)
+    repley_article=models.CharField(u'目标文章',max_length=200)
     ip_addr=models.CharField(u'ip地址',max_length=100)
     message=models.CharField(u'评论内容',max_length=200)
     article_post=models.ForeignKey('TestModel.Entry',on_delete=models.CASCADE)
