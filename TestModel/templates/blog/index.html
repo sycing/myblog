@@ -47,8 +47,8 @@
                             {% endfor %}
                         {% endif %}
 
-                        <li class="active"><a href="?page={{ entry_list.number }}">{{ entry_list.number }}</a></li>
-
+{#                        <li class="active"><a href="?page={{ entry_list.number }}">{{ entry_list.number }}</a></li>#}
+                          <li class="active"><a href="#">{{ entry_list.number }}</a></li>
                         {% if right %}
                             {% for i in right %}
                                 <li><a href="?page={{ i }}">{{ i }}</a></li>

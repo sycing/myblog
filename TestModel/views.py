@@ -20,17 +20,28 @@ def archives(request, year, month):
 def search(request):
     keyword = request.GET.get('keyword',None)
     if not keyword:
-        print 123
         error_msg = u"请输入关键字"
-        index(request)
+        return index(request)
         # return render(request,'blog/index.html',locals())
-    # usernamelist=models.User.objects.get(username=keyword)
-    # print (usernamelist.id)
-    entries = models.Entry.objects.filter(Q(title__icontains=keyword)
-                                          | Q(body__icontains=keyword)
-                                          | Q(abstract__icontains=keyword)
-                                          # |Q(author_id=usernamelist.id)
-                                          )
+    try:
+        usernamelist=models.User.objects.get(username=keyword)
+        if str(usernamelist.id).isdigit():
+            entries = models.Entry.objects.filter(Q(title__icontains=keyword)
+                                                  | Q(body__icontains=keyword)
+                                                  | Q(abstract__icontains=keyword)
+                                                  | Q(author_id=usernamelist.id)
+                                                  )
+        else:
+            entries = models.Entry.objects.filter(Q(title__icontains=keyword)
+                                                  | Q(body__icontains=keyword)
+                                                  | Q(abstract__icontains=keyword)
+                                                  )
+    except:
+        entries = models.Entry.objects.filter(Q(title__icontains=keyword)
+                                              | Q(body__icontains=keyword)
+                                              | Q(abstract__icontains=keyword)
+                                              )
+
     page = request.GET.get('page', 1)
     entry_list, paginator = make_paginator(entries, page)
     page_data = pagination_data(paginator, page)
