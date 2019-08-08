@@ -225,11 +225,9 @@ def permission_denied(request):
     '''403'''
     return render(request, 'blog/403.html', locals())
 
-
 def page_not_found(request):
     '''404'''
     return render(request, 'blog/404.html', locals())
-
 
 def page_error(request):
     '''500'''

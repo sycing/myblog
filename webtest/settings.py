@@ -48,9 +48,9 @@ INSTALLED_APPS = [
     # 'django.contrib.sites',
     # 'django_comments',
 
-    'xadmin',
-    'crispy_forms',
-    'reversion',
+    # 'xadmin',
+    # 'crispy_forms',
+    # 'reversion',
 ]
 
 MIDDLEWARE = [
@@ -100,6 +100,10 @@ DATABASES = {
         'PORT':'3306',
         'CHARSET': 'utf8',
         'COLLATION': 'utf8_general_ci',
+        'TEST': {
+                'CHARSET': 'utf8',
+                'COLLATION': 'utf8_general_ci',
+            }
 
    }
 }
@@ -142,7 +146,7 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT='/static/Ç'
+STATIC_ROOT='/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR,'static'),
 ]

@@ -99,39 +99,39 @@
 
 
 {#            评论显示区#}
-            <div class="row">
-            {% for comment in comment_list %}
-                <div class="single_comment" style="margin-left: {{ comment.level }}em">
-                    <div>
-                        {% if comment.user_img %}
-                            <img src="{{ comment.user_img }}" alt="user_image" />
-                        {% else %}
-                            <img src="{% static 'blog/images/cl.jpg' %}" />
-                        {% endif %}
-                    </div>
-                    <div class="col-md-11 comment-content" style="margin-bottom: 10px;">
-                        <strong>{{ comment.comment_title }}</strong>
-                        <div>
-                            {% if comment.parent_comment %}
-                                        {{ comment.user_name }}{{ request.user }}
-                                        <i class="glyphicon glyphicon-share-alt"></i>
-                                        {{ comment.parent_comment.user_name }}{{ request.user }}
-                            {% else %}
-                                    By&nbsp;&nbsp;
-                                        {{ comment.user_name }}{{ request.user }}
-                                    &nbsp;&nbsp;&nbsp;On&nbsp;&nbsp;
-                            {% endif %}
-                            <em>{{ comment.submit_date }}</em>
-                            {% if request.session.login or request.user.is_authenticated %}
-                            &nbsp;&nbsp;&nbsp;<a href="{% url 'blog:comment_reply' comment.id %}">回复</a>
-                            {% endif %}
-                        </div>
-                    <br />
-                        <p>{{ comment.comment }}</p>
-                    </div>
-                </div>
-            {% endfor %}
-            </div>
+{#            <div class="row">#}
+{#            {% for comment in comment_list %}#}
+{#                <div class="single_comment" style="margin-left: {{ comment.level }}em">#}
+{#                    <div>#}
+{#                        {% if comment.user_img %}#}
+{#                            <img src="{{ comment.user_img }}" alt="user_image" />#}
+{#                        {% else %}#}
+{#                            <img src="{% static 'blog/images/cl.jpg' %}" />#}
+{#                        {% endif %}#}
+{#                    </div>#}
+{#                    <div class="col-md-11 comment-content" style="margin-bottom: 10px;">#}
+{#                        <strong>{{ comment.comment_title }}</strong>#}
+{#                        <div>#}
+{#                            {% if comment.parent_comment %}#}
+{#                                        {{ comment.user_name }}{{ request.user }}#}
+{#                                        <i class="glyphicon glyphicon-share-alt"></i>#}
+{#                                        {{ comment.parent_comment.user_name }}{{ request.user }}#}
+{#                            {% else %}#}
+{#                                    By&nbsp;&nbsp;#}
+{#                                        {{ comment.user_name }}{{ request.user }}#}
+{#                                    &nbsp;&nbsp;&nbsp;On&nbsp;&nbsp;#}
+{#                            {% endif %}#}
+{#                            <em>{{ comment.submit_date }}</em>#}
+{#                            {% if request.session.login or request.user.is_authenticated %}#}
+{#                            &nbsp;&nbsp;&nbsp;<a href="{% url 'blog:comment_reply' comment.id %}">回复</a>#}
+{#                            {% endif %}#}
+{#                        </div>#}
+{#                    <br />#}
+{#                        <p>{{ comment.comment }}</p>#}
+{#                    </div>#}
+{#                </div>#}
+{#            {% endfor %}#}
+{#            </div>#}
         </div>
 
 
@@ -139,14 +139,14 @@
 
 
             <div class="col-md-3">
-                {% block toc %}
-                    <div class="row">
-                        <div class="widget">
-                            <h3>博客目录</h3>
-                            {{ entry.toc|safe }}
-                        </div>
-                    </div>
-                {% endblock %}
+{#                {% block toc %}#}
+{#                    <div class="row">#}
+{#                        <div class="widget">#}
+{#                            <h3>博客目录</h3>#}
+{#                            {{ entry.toc|safe }}#}
+{#                        </div>#}
+{#                    </div>#}
+{#                {% endblock %}#}
                 {% include 'blog/right_side_bar.html' %}
             </div>
         </div>

@@ -42,7 +42,7 @@ info_dict = {
 urlpatterns = [
     url(r'^$',blog_views.index),
     url(r'^admin/', admin.site.urls),
-    url(r'^xadmin/', xadmin.site.urls),
+    # url(r'^xadmin/', xadmin.site.urls),
     url(r'^blog/',include('TestModel.urls') ),
     url(r'^resource/',include('Resource.urls')),
     url(r'^latest/feed/$', LatestEntriesFeed()),    #RSS订阅
